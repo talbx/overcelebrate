@@ -1,4 +1,4 @@
-FROM arm32v7/golang:1.17.8-alpine3.15 as gobuild
+FROM arm32v7/golang:1.17.8-alpine as gobuild
 
 WORKDIR /app
 RUN apk update && apk upgrade && apk add --no-cache ca-certificates
