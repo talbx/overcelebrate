@@ -10,9 +10,9 @@ import (
 
 func main() {
 	utils.Sugar.Info("birthday-notice initialized!")
-	//	_ = gocron.Every(1).Day().At("09:00").Do(CheckBirthdays)
-	_ = gocron.Every(1).Minute().Do(CheckBirthdays)
-	<- gocron.Start()
+	_ = gocron.Every(1).Day().At("09:00").Do(CheckBirthdays)
+	//_ = gocron.Every(1).Minute().Do(CheckBirthdays)
+	<-gocron.Start()
 }
 
 func CheckBirthdays() {
@@ -31,5 +31,3 @@ func createDelegate() delegate.ProcessingDelegate {
 	processingDelegate := delegate.ProcessingDelegate{MessageDelegate: messageDelegate}
 	return processingDelegate
 }
-
-
