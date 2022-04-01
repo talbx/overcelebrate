@@ -3,8 +3,8 @@ package delegate
 import (
 	"fmt"
 	"github.com/gregdel/pushover"
-	"github.com/talbx/birthday-notice/internal/pkg/model"
-	"github.com/talbx/birthday-notice/internal/pkg/service"
+	"github.com/talbx/celepush/internal/pkg/model"
+	"github.com/talbx/celepush/internal/pkg/service"
 )
 
 type MessageDelegate interface {

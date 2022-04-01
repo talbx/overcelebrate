@@ -2,7 +2,7 @@ package service
 
 import (
 	"fmt"
-	"github.com/talbx/birthday-notice/internal/pkg/model"
+	"github.com/talbx/celepush/internal/pkg/model"
 	"gopkg.in/yaml.v3"
 	"io/ioutil"
 	"log"

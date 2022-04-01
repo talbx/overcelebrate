@@ -1,4 +1,4 @@
-module github.com/talbx/birthday-notice
+module github.com/talbx/celepush
 
 go 1.17
 

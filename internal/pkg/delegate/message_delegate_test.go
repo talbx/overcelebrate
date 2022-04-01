@@ -3,7 +3,7 @@ package delegate
 import (
 	"github.com/gregdel/pushover"
 	"github.com/stretchr/testify/mock"
-	"github.com/talbx/birthday-notice/internal/pkg/model"
+	"github.com/talbx/celepush/internal/pkg/model"
 	"testing"
 )
 

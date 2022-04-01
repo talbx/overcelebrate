@@ -1,8 +1,9 @@
 package delegate
 
 import (
-	"github.com/talbx/birthday-notice/internal/pkg/model"
-	"github.com/talbx/birthday-notice/internal/pkg/utils"
+	"fmt"
+	"github.com/talbx/celepush/internal/pkg/model"
+	"github.com/talbx/celepush/internal/pkg/utils"
 	"log"
 	"time"
 )
@@ -22,13 +23,11 @@ func (delegate ProcessingDelegate) Delegate(entries *[]model.BirthdayEntry) {
 		if utils.IsSameDate(now, parse) {
 			foundSomeone = true
 			age := utils.CalculateAge(now.Year(), parse.Year())
-			utils.Sugar.Infow("Found a Birthday for today!",
-				"name", item.Name,
-				"age", age)
+			log.Println(fmt.Sprintf("Found a Birthday for today: %s turns %d", item.Name, age))
 			delegate.MessageDelegate.Delegate(item, age)
 		}
 	}
 	if !foundSomeone {
-		utils.Sugar.Infow("No Birthday found for today")
+		log.Println("No Birthday found for today")
 	}
 }

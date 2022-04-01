@@ -1,8 +1,8 @@
 package service
 
 import (
+	"fmt"
 	"github.com/gregdel/pushover"
-	"github.com/talbx/birthday-notice/internal/pkg/utils"
 	"log"
 )
 
@@ -21,9 +21,6 @@ func (notificationService PushNotificationService) Notify(msg *pushover.Message)
 		log.Panic(err)
 	}
 
-	utils.Sugar.Infow("Sent out pushover message with",
-		"id", response.ID,
-	)
-
+	log.Printf(fmt.Sprintf("Sent out pushover message with id %s", response.ID))
 	return response
 }

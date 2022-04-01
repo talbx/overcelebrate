@@ -2,26 +2,25 @@ package main
 
 import (
 	"github.com/jasonlvhit/gocron"
-	"github.com/talbx/birthday-notice/internal/pkg/delegate"
-	"github.com/talbx/birthday-notice/internal/pkg/model"
-	"github.com/talbx/birthday-notice/internal/pkg/service"
-	"github.com/talbx/birthday-notice/internal/pkg/utils"
+	"github.com/talbx/celepush/internal/pkg/delegate"
+	"github.com/talbx/celepush/internal/pkg/model"
+	"github.com/talbx/celepush/internal/pkg/service"
+	"log"
 )
 
 func main() {
-	utils.Sugar.Info("birthday-notice initialized!")
+	log.Println("celepush initialized!")
 	_ = gocron.Every(1).Day().At("09:00").Do(CheckBirthdays)
-	//_ = gocron.Every(1).Minute().Do(CheckBirthdays)
 	<-gocron.Start()
 }
 
 func CheckBirthdays() {
-	utils.Sugar.Infow("Executing birthday check")
+	log.Println("Executing birthday check")
 	var entries []model.BirthdayEntry
 	service.ReadCandidates(&entries)
 	processingDelegate := createDelegate()
 	processingDelegate.Delegate(&entries)
-	utils.Sugar.Infow("Finished execution of birthday check")
+	log.Println("Finished execution of birthday check")
 
 }
 
