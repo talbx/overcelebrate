@@ -1,0 +1,9 @@
+version: '3.2'
+services:
+  celepush:
+    container_name: celepush
+    build:
+      dockerfile: pi.Dockerfile
+      context: .
+    network_mode: host
+
