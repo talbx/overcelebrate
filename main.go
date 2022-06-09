@@ -13,9 +13,9 @@ import (
 
 func main() {
 	log.Println("celepush initialized!")
-	// CheckBirthdays()
-	go forever()
-	select {}
+	CheckBirthdays()
+	// go forever()
+	// select {}
 	log.Println("celepush terminating!")
 	os.Exit(0)
 }
