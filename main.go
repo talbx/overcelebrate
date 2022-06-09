@@ -1,17 +1,19 @@
 package main
 
 import (
-	"github.com/jasonlvhit/gocron"
+	"log"
+	"os"
+
 	"github.com/talbx/celepush/internal/pkg/delegate"
 	"github.com/talbx/celepush/internal/pkg/model"
 	"github.com/talbx/celepush/internal/pkg/service"
-	"log"
 )
 
 func main() {
 	log.Println("celepush initialized!")
-	_ = gocron.Every(1).Day().At("09:00").Do(CheckBirthdays)
-	<-gocron.Start()
+	CheckBirthdays()
+	log.Println("celepush terminating!")
+	os.Exit(0)
 }
 
 func CheckBirthdays() {
@@ -21,7 +23,6 @@ func CheckBirthdays() {
 	processingDelegate := createDelegate()
 	processingDelegate.Delegate(&entries)
 	log.Println("Finished execution of birthday check")
-
 }
 
 func createDelegate() delegate.ProcessingDelegate {
