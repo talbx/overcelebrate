@@ -11,7 +11,7 @@ import (
 
 func main() {
 	log.Println("celepush initialized!")
-	CheckBirthdays()
+	// CheckBirthdays()
 	log.Println("celepush terminating!")
 	os.Exit(0)
 }
@@ -23,6 +23,7 @@ func CheckBirthdays() {
 	processingDelegate := createDelegate()
 	processingDelegate.Delegate(&entries)
 	log.Println("Finished execution of birthday check")
+
 }
 
 func createDelegate() delegate.ProcessingDelegate {
