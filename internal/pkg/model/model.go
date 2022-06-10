@@ -4,10 +4,11 @@ type BirthdayEntry struct {
 	Name string `yaml:"name"`
 	Date string `yaml:"date"`
 }
-
+type PushoverConfig struct {
+	Apitoken  string `yaml:"apitoken"`
+	Usertoken string `yaml:"usertoken"`
+}
 type AppConfig struct {
-	Pushover struct {
-		Apitoken  string
-		Usertoken string
-	}
+	Birthdays      []BirthdayEntry `yaml:"bdays"`
+	PushoverConfig PushoverConfig  `yaml:"pushover"`
 }

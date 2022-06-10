@@ -2,19 +2,20 @@ package delegate
 
 import (
 	"fmt"
-	"github.com/talbx/celepush/internal/pkg/model"
-	"github.com/talbx/celepush/internal/pkg/utils"
 	"log"
 	"time"
+
+	"github.com/talbx/celepush/internal/pkg/model"
+	"github.com/talbx/celepush/internal/pkg/utils"
 )
 
-type ProcessingDelegate struct{
+type ProcessingDelegate struct {
 	MessageDelegate MessageDelegate
 }
 
-func (delegate ProcessingDelegate) Delegate(entries *[]model.BirthdayEntry) {
+func (delegate ProcessingDelegate) Delegate(config model.AppConfig) {
 	var foundSomeone = false
-	for _, item := range *entries {
+	for _, item := range config.Birthdays {
 		now := time.Now()
 		parse, err := time.Parse("02-01-2006", item.Date)
 		if err != nil {

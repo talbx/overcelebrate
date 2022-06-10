@@ -1,48 +1,30 @@
 package service
 
 import (
-	"fmt"
+	"io/ioutil"
+
 	"github.com/talbx/celepush/internal/pkg/model"
 	"gopkg.in/yaml.v3"
-	"io/ioutil"
-	"log"
 )
 
 type ConfigReader interface {
-	ReadConfig() model.AppConfig
+	ReadConfig(config *model.AppConfig)
 }
 
-type ConfigReaderImpl struct {}
+type ConfigReaderImpl struct{}
 
-var AppConf, _ = ConfigReaderImpl{}.ReadConfig()
+var AppConf model.AppConfig
 
-func (reader ConfigReaderImpl) ReadConfig() (*model.AppConfig, error) {
+func (reader ConfigReaderImpl) ReadConfig(config *model.AppConfig) {
 	filename := "config.yaml"
 	buf, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return nil, err
-	}
-
-	c := &model.AppConfig{}
-	err = yaml.Unmarshal(buf, c)
-	if err != nil {
-		return nil, fmt.Errorf("in file %q: %v", filename, err)
-	}
-	return c, nil
-}
-
-func ReadCandidates(entries *[]model.BirthdayEntry) {
-	filename := "bdays.yaml"
-	yamlFile, err := ioutil.ReadFile(filename)
-
-	_ = fmt.Sprintf("---\n%s\n\n", string(yamlFile))
-	// log.Println(sprintf)
 	if err != nil {
 		panic(err)
 	}
 
-	err = yaml.Unmarshal(yamlFile, entries)
+	err = yaml.Unmarshal(buf, config)
+	AppConf = *config
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 }

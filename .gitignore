@@ -24,7 +24,9 @@
 
 # Go workspace file
 go.work
-
+*.yaml
+celepush
+.idea/
 ### Go Patch ###
 /vendor/
 /Godeps/

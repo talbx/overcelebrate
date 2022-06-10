@@ -14,20 +14,18 @@ import (
 func main() {
 	log.Println("celepush initialized!")
 	CheckBirthdays()
-	// go forever()
-	// select {}
 	log.Println("celepush terminating!")
 	os.Exit(0)
 }
 
 func CheckBirthdays() {
 	log.Println("Executing birthday check")
-	var entries []model.BirthdayEntry
-	service.ReadCandidates(&entries)
+	var appConfig model.AppConfig
+	var configReader service.ConfigReader = service.ConfigReaderImpl{}
+	configReader.ReadConfig(&appConfig)
 	processingDelegate := createDelegate()
-	processingDelegate.Delegate(&entries)
+	processingDelegate.Delegate(appConfig)
 	log.Println("Finished execution of birthday check")
-
 }
 
 func forever() {
