@@ -22,39 +22,34 @@ data:
       apitoken: "myApiToken"
 ```
 
-`deployment.yaml`
+`cronjob.yaml`
 ```yaml
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: CronJob
 metadata:
-  name: overcelebrate-deployment
+  name: overcelebrate-cronjob
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: overcelebrate
-  template:
-    metadata:
-      labels:
-        app: overcelebrate
+  schedule: "0 8 * * *"
+  jobTemplate:
     spec:
-      containers:
-        - name: overcelebrate
-          image: overcelebrate
-          imagePullPolicy: Never
-          resources:
-            limits:
-              memory: 100m
-              cpu: 100m
-          volumeMounts:
-            - mountPath: /app/config.yaml
-              name: config
-              subPath: config.yaml
-      volumes:
-        - name: config
-          configMap:
-            name: overcelebrate-configmap
-
+      template:
+        spec:
+          containers:
+          - name: overcelebrate
+            image: overcelebrate
+            resources:
+              limits:
+                memory: 50m
+                cpu: 100m
+            imagePullPolicy: Never
+            volumeMounts:
+              - mountPath: /app/config.yaml
+                name: config
+                subPath: config.yaml
+          restartPolicy: OnFailure
+          volumes:
+            - name: config
+              configMap:
+                name: overcelebrate-configmap
 ```
-
