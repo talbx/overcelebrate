@@ -2,9 +2,10 @@ package delegate
 
 import (
 	"fmt"
+
 	"github.com/gregdel/pushover"
-	"github.com/talbx/celepush/internal/pkg/model"
-	"github.com/talbx/celepush/internal/pkg/service"
+	"github.com/talbx/overcelebrate/internal/pkg/model"
+	"github.com/talbx/overcelebrate/internal/pkg/service"
 )
 
 type MessageDelegate interface {

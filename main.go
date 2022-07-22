@@ -6,15 +6,15 @@ import (
 	"os"
 	"time"
 
-	"github.com/talbx/celepush/internal/pkg/delegate"
-	"github.com/talbx/celepush/internal/pkg/model"
-	"github.com/talbx/celepush/internal/pkg/service"
+	"github.com/talbx/overcelebrate/internal/pkg/delegate"
+	"github.com/talbx/overcelebrate/internal/pkg/model"
+	"github.com/talbx/overcelebrate/internal/pkg/service"
 )
 
 func main() {
-	log.Println("celepush initialized!")
+	log.Println("overcelebrate initialized!")
 	CheckBirthdays()
-	log.Println("celepush terminating!")
+	log.Println("overcelebrate terminating!")
 	os.Exit(0)
 }
 

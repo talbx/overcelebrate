@@ -1,4 +1,4 @@
-module github.com/talbx/celepush
+module github.com/talbx/overcelebrate
 
 go 1.17
 

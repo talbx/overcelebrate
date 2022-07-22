@@ -5,8 +5,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/talbx/celepush/internal/pkg/model"
-	"github.com/talbx/celepush/internal/pkg/utils"
+	"github.com/talbx/overcelebrate/internal/pkg/model"
+	"github.com/talbx/overcelebrate/internal/pkg/utils"
 )
 
 type ProcessingDelegate struct {

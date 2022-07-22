@@ -3,7 +3,7 @@ package service
 import (
 	"io/ioutil"
 
-	"github.com/talbx/celepush/internal/pkg/model"
+	"github.com/talbx/overcelebrate/internal/pkg/model"
 	"gopkg.in/yaml.v3"
 )
 

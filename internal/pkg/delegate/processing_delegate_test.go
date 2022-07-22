@@ -1,17 +1,18 @@
 package delegate
 
 import (
-	"github.com/stretchr/testify/mock"
-	"github.com/talbx/celepush/internal/pkg/model"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/mock"
+	"github.com/talbx/overcelebrate/internal/pkg/model"
 )
 
 type mockMessageDelegate struct {
 	mock.Mock
 }
 
-func (m *mockMessageDelegate) Delegate(item model.BirthdayEntry, age int){
+func (m *mockMessageDelegate) Delegate(item model.BirthdayEntry, age int) {
 	m.Called(item, age)
 }
 
@@ -29,8 +30,6 @@ func TestShouldDelegateFurther(t *testing.T) {
 	formatted := time.Now().Format("02-01-2006")
 	hans := model.BirthdayEntry{Name: "hans", Date: formatted}
 	source := []model.BirthdayEntry{hans}
-
-
 
 	mockService := new(mockMessageDelegate)
 	mockService.On("Delegate", mock.Anything, mock.Anything).Return(nil)

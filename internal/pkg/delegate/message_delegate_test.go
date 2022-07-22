@@ -1,10 +1,11 @@
 package delegate
 
 import (
+	"testing"
+
 	"github.com/gregdel/pushover"
 	"github.com/stretchr/testify/mock"
-	"github.com/talbx/celepush/internal/pkg/model"
-	"testing"
+	"github.com/talbx/overcelebrate/internal/pkg/model"
 )
 
 type mockNotificationService struct {
