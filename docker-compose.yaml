@@ -1,7 +1,7 @@
 version: '3.2'
 services:
-  celepush:
-    container_name: celepush
+  overcelebrate:
+    container_name: overcelebrate
     build:
       dockerfile: pi.Dockerfile
       context: .
